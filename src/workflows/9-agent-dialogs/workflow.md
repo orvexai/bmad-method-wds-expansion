@@ -30,6 +30,25 @@ Agent Dialogs solve these problems:
 - **Replayability** — Instructions can be rerun if needed
 - **Handoff** — Different agents or humans can continue the work
 
+### The Bridge Role
+
+Agent Dialogs bridge the gap between **specifications** and **development**:
+
+```
+┌─────────────────────┐         ┌─────────────────────┐         ┌─────────────────────┐
+│   SPECIFICATION     │         │   AGENT DIALOG      │         │   DEVELOPMENT       │
+│                     │         │                     │         │                     │
+│ • What to build     │────────▶│ • What's in scope   │────────▶│ • How to build      │
+│ • Object IDs        │         │ • Step breakdown    │         │ • Code files        │
+│ • Requirements      │         │ • Traceability      │         │ • Components        │
+│ • Translations      │         │ • Progress tracking │         │ • Tests             │
+└─────────────────────┘         └─────────────────────┘         └─────────────────────┘
+     Single Source                   Navigation                    Implementation
+      of Truth                         Layer
+```
+
+**The specification is the single source of truth.** Dialogs do not duplicate spec content — they map implementation tasks to spec sections via Object IDs
+
 ---
 
 ## WHEN TO USE
@@ -133,33 +152,42 @@ Each type has a specialized template with relevant sections pre-configured.
 
 ```
 docs/F-Agent-Dialogs/
-└── {DATE}-{feature-name}/
-    ├── {DATE}-{feature-name}-dialog.md    ← Main file (meta, purpose, setup, progress)
+└── {DATE}-{agent}-{feature-name}/
+    ├── {DATE}-{agent}-{feature-name}-dialog.md    ← Main file (meta, purpose, setup, progress)
     └── steps/
-        ├── 01-{step-name}.md              ← Self-contained step instructions
+        ├── 01-{step-name}.md                      ← Self-contained step instructions
         ├── 02-{step-name}.md
         └── ...
 ```
 
 **Naming Convention:**
 - Date format: `YYYY-MM-DD`
+- Agent name: lowercase (e.g., `freya`, `saga`, `eira`)
 - Feature name: lowercase, hyphenated (e.g., `booking-details-drawer`)
 - Step files: numbered prefix with descriptive name
+
+**Examples:**
+- `2026-01-23-freya-booking-details-overlay/`
+- `2026-01-23-saga-course-workflow-integration/`
+- `2026-01-23-eira-visual-design-exploration/`
 
 ---
 
 ## THE DIALOG FILE
 
-The main dialog file (`{DATE}-{feature-name}-dialog.md`) contains everything needed to understand and manage the implementation work.
+The main dialog file (`{DATE}-{agent}-{feature-name}-dialog.md`) contains everything needed to understand and manage the implementation work.
 
 ### Required Sections
 
 1. **Meta** — Date, agent, feature, specification reference, status
 2. **Purpose** — What this dialog accomplishes
-3. **Setup Context** — All context an agent needs to start fresh
-4. **Scope** — What's in/out, dependencies
-5. **Steps Overview** — Table tracking progress across all steps
-6. **Progress Log** — Chronological record of work done
+3. **About This Dialog** — Explains the bridge role between spec and development
+4. **Where to Find What** — Navigation table for agents/humans
+5. **Setup Context** — All context an agent needs to start fresh
+6. **Scope** — What's in/out, dependencies
+7. **Steps Overview** — Table tracking progress across all steps
+8. **Progress Log** — Chronological record of work done
+9. **Spec Changes Discovered** — Track any spec updates made during implementation
 
 See template: [templates/dialog.template.md](templates/dialog.template.md)
 
@@ -169,15 +197,33 @@ See template: [templates/dialog.template.md](templates/dialog.template.md)
 
 Each step file is **self-contained** — an agent with no prior context can execute it.
 
+### Core Principle: Link, Don't Duplicate
+
+Step files **link to specifications** rather than copying content:
+
+```markdown
+## Object ID Implementation Map
+
+| Object ID | Spec Section | Lines |
+|-----------|--------------|-------|
+| `booking-detail-header` | Drawer Header | L149-L158 |
+| `booking-detail-close` | Close Button | L159-L168 |
+```
+
+This ensures:
+- Specification remains the single source of truth
+- No drift between spec and step files
+- Clear traceability from code → Object ID → spec section
+
 ### Required Sections
 
-1. **Context** — Brief context (what exists, what we're adding)
-2. **Specification Reference** — Relevant excerpt from the spec
-3. **Task** — Clear description of what to implement
-4. **Files to Modify** — Explicit list of files
-5. **Implementation Details** — Specific guidance, patterns to follow
-6. **Acceptance Criteria** — Checklist for "done"
-7. **Test Instructions** — How to verify the implementation
+1. **Meta** — Agent, step number, focus area
+2. **Single Source of Truth** — Link to specification with warning to read first
+3. **Object ID Implementation Map** — Table mapping Object IDs to spec line numbers
+4. **Task** — Clear description of what to implement
+5. **Files to Modify** — Explicit list of files
+6. **Implementation Checklist** — Per Object ID: Read → Implement → Verify
+7. **Acceptance Criteria** — All Object IDs present and match spec
 
 See template: [templates/step.template.md](templates/step.template.md)
 
@@ -272,22 +318,30 @@ To begin, load and execute [steps/step-01-initialize-dialog.md](steps/step-01-in
 
 ## BEST PRACTICES
 
+### Single Source of Truth
+
+- **Never duplicate spec content** — Link to spec sections with line numbers
+- **Object IDs are the contract** — Every implementation maps to an Object ID
+- **Spec changes update the spec** — Not the dialog or step files
+- **Verify against spec** — Not against copied content in step files
+
 ### Dialog Files
 
 - **Be thorough in Setup Context** — Assume the agent has zero prior knowledge
 - **Include file paths** — Always use absolute or project-relative paths
-- **Reference specifications** — Link to the source specs, don't duplicate
+- **"Where to Find What" table** — Help agents navigate between spec, dialog, and code
 - **Track progress** — Update the Steps Overview table after each step
 
 ### Step Files
 
+- **Object ID Implementation Map** — Every step lists its Object IDs with spec line refs
 - **One clear task** — Each step should accomplish one thing
+- **Implementation Checklist** — Read spec → Implement → Verify (per Object ID)
 - **Self-contained** — Include all context needed to execute
-- **Specific criteria** — Acceptance criteria should be verifiable
-- **Test instructions** — Always include how to verify the work
 
 ### Execution
 
+- **Read spec first** — Before implementing any Object ID
 - **Fresh context is fine** — Steps are designed to work in isolation
 - **Update as you go** — Don't wait to update progress
 - **Capture discoveries** — Note spec changes or issues found
@@ -296,11 +350,11 @@ To begin, load and execute [steps/step-01-initialize-dialog.md](steps/step-01-in
 
 ## EXAMPLES
 
-### Example: Feature Implementation Dialog
+### Example: Feature Implementation Dialog (Freya)
 
 ```
-2026-01-23-booking-details-drawer/
-├── 2026-01-23-booking-details-drawer-dialog.md
+2026-01-23-freya-booking-details-drawer/
+├── 2026-01-23-freya-booking-details-drawer-dialog.md
 └── steps/
     ├── 01-drawer-shell.md
     ├── 02-date-display.md
@@ -310,22 +364,22 @@ To begin, load and execute [steps/step-01-initialize-dialog.md](steps/step-01-in
     └── 06-state-transitions.md
 ```
 
-### Example: Bug Fix Dialog
+### Example: Bug Fix Dialog (Dev Agent)
 
 ```
-2026-01-23-calendar-scroll-fix/
-├── 2026-01-23-calendar-scroll-fix-dialog.md
+2026-01-23-dev-calendar-scroll-fix/
+├── 2026-01-23-dev-calendar-scroll-fix-dialog.md
 └── steps/
     ├── 01-reproduce-issue.md
     ├── 02-implement-fix.md
     └── 03-verify-fix.md
 ```
 
-### Example: Capture Dialog
+### Example: Capture Dialog (SAGA)
 
 ```
-2026-01-23-user-settings-page/
-└── 2026-01-23-user-settings-page-dialog.md   ← Just this file, expand later
+2026-01-23-saga-user-settings-page/
+└── 2026-01-23-saga-user-settings-page-dialog.md   ← Just this file, expand later
 ```
 
 ---

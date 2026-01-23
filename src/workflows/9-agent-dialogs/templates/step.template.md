@@ -1,33 +1,38 @@
 # Step {##}: {Step Name}
 
-## Context
+## Meta
 
-{Brief context for this step. What exists? What are we adding? Why?}
-
-**Parent Dialog:** [{dialog-name}](../{date}-{feature}-dialog.md)
-
-**Previous Step:** [{previous step}](./{{##-1}}-{previous-step}.md) _(or "None - this is the first step")_
-
-**Next Step:** [{next step}](./{{##+1}}-{next-step}.md) _(or "None - this is the final step")_
+| Field | Value |
+|-------|-------|
+| **Agent** | {Agent name — e.g., Freya (UX Designer)} |
+| **Step** | {#} of {total} |
+| **Focus** | {Brief description of step focus} |
 
 ---
 
-## Specification Reference
+## Single Source of Truth
 
-{Excerpt or link to the relevant specification section}
+⚠️ **READ THE SPECIFICATION BEFORE IMPLEMENTING.**
 
-<!--
-Example:
-From [3.2-Booking-Details.md](path):
+📄 **Specification:** [{Spec name}]({path-to-spec})
 
-### Header Title
-**OBJECT ID**: `booking-detail-header`
-| Property | Value |
-|----------|-------|
-| Translation Key | `bookingDetail.header.bookSlot` |
-| SE | "Boka pass" |
-| EN | "Book slot" |
--->
+The specification contains the complete requirements. This step file maps Object IDs to their spec locations — do not implement without reading the full spec sections.
+
+---
+
+## Object ID Implementation Map
+
+| Object ID | Spec Section | Lines |
+|-----------|--------------|-------|
+| `{object-id-1}` | {Section name} | L{start}-L{end} |
+| `{object-id-2}` | {Section name} | L{start}-L{end} |
+| `{object-id-3}` | {Section name} | L{start}-L{end} |
+
+### Design System References
+
+| Component | Location |
+|-----------|----------|
+| {Component name} | `{path-to-design-system-component}` |
 
 ---
 
@@ -35,68 +40,51 @@ From [3.2-Booking-Details.md](path):
 
 {Clear description of what to implement in this step}
 
-### Objectives
-
-1. {Specific objective 1}
-2. {Specific objective 2}
-3. {Specific objective 3}
-
 ---
 
 ## Files to Modify
 
-| File | Action | Purpose |
-|------|--------|---------|
-| `{path/to/file}` | {Create / Modify} | {What change} |
-| `{path/to/file}` | {Create / Modify} | {What change} |
+| File | Action |
+|------|--------|
+| `{path/to/file}` | {Create / Modify} |
 
 ---
 
-## Implementation Details
+## Implementation Checklist
 
-{Specific guidance for implementing this step}
+For **each Object ID**, read the spec section and implement:
 
-### Approach
+| Object ID | Read Spec | Implement | Verify |
+|-----------|-----------|-----------|--------|
+| `{object-id-1}` | [ ] | [ ] | [ ] |
+| `{object-id-2}` | [ ] | [ ] | [ ] |
+| `{object-id-3}` | [ ] | [ ] | [ ] |
 
-{Describe the implementation approach}
+---
 
-### Code Patterns
+## Verification Process
 
-{Any specific patterns to follow, e.g.:}
+After implementation, verify each Object ID against the spec:
 
-```typescript
-// Example pattern to follow
 ```
-
-### Considerations
-
-- {Important consideration 1}
-- {Important consideration 2}
+For each Object ID:
+  1. Find element: document.querySelector('[data-object-id="{id}"]')
+  2. Open spec at the line reference
+  3. Confirm ALL properties match:
+     - Translation keys
+     - Format/styling
+     - Visibility conditions
+     - Accessibility attributes
+```
 
 ---
 
 ## Acceptance Criteria
 
-- [ ] {Criterion 1 — specific, verifiable}
-- [ ] {Criterion 2}
-- [ ] {Criterion 3}
+- [ ] All Object IDs present as `data-object-id` attributes
+- [ ] Each element matches its specification section **exactly**
+- [ ] Translations work (SE/EN) using Translation Keys from spec
 - [ ] No TypeScript errors
-- [ ] UI matches specification
-
----
-
-## Test Instructions
-
-### Manual Testing
-
-1. {Step 1 to test}
-2. {Step 2 to test}
-3. {Expected result}
-
-### Edge Cases
-
-- {Edge case 1}: {expected behavior}
-- {Edge case 2}: {expected behavior}
 
 ---
 
@@ -104,13 +92,6 @@ From [3.2-Booking-Details.md](path):
 
 {Any additional notes, discoveries, or issues found during implementation}
 
-<!--
-Fill this in as you work:
-- Discovered X needs clarification
-- Pattern Y worked better than expected
-- Issue Z needs to be addressed in next step
--->
-
 ---
 
-_Step file for WDS Agent Dialog_
+_Step {#} of {total} — {Feature Name} Implementation_

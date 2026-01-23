@@ -20,6 +20,41 @@ Implement {feature name} from specification into working code, following the sec
 
 ---
 
+## About This Dialog
+
+This dialog **bridges the gap** between the page specification and the development work.
+
+```
+┌─────────────────────┐         ┌─────────────────────┐         ┌─────────────────────┐
+│   SPECIFICATION     │         │    THIS DIALOG      │         │   DEVELOPMENT       │
+│                     │         │                     │         │                     │
+│ • What to build     │────────▶│ • What's in scope   │────────▶│ • How to build      │
+│ • Object IDs        │         │ • Step breakdown    │         │ • Code files        │
+│ • Requirements      │         │ • Traceability      │         │ • Components        │
+│ • Translations      │         │ • Progress tracking │         │ • Tests             │
+└─────────────────────┘         └─────────────────────┘         └─────────────────────┘
+     Single Source                   Navigation                    Implementation
+      of Truth                         Layer
+```
+
+**The specification is the single source of truth.** This dialog does not duplicate spec content — it maps implementation tasks to spec sections.
+
+---
+
+## Where to Find What
+
+| I need... | Go to... |
+|-----------|----------|
+| Complete requirements for an Object ID | [{Spec name}]({path-to-spec}) |
+| Translation keys and strings | Specification → each Object ID section |
+| What's in scope for this implementation | This file → [Scope](#scope) section |
+| Step-by-step implementation instructions | [steps/](steps/) folder |
+| Which Object IDs belong to which step | Each step file → Object ID Implementation Map |
+| Design system component patterns | {path-to-design-system} |
+| Existing code to modify | This file → [Existing Code](#existing-code) table |
+
+---
+
 ## Setup Context
 
 ### Project Context
