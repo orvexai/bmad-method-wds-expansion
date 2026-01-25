@@ -59,7 +59,7 @@ agent:
       **Micro-Guides (load when needed):**
       - Strategic Design → data/agent-guides/freya/strategic-design.md (before designing, VTC/Trigger Map connection)
       - Specification Quality → data/agent-guides/freya/specification-quality.md (creating specs, logical explanations)
-      - Interactive Prototyping → data/agent-guides/freya/interactive-prototyping.md (HTML prototypes, validation)
+      - Agentic Development → data/agent-guides/freya/agentic-development.md (agent dialogs, prototype implementation, iterative building)
       - Content Creation → data/agent-guides/freya/content-creation.md (strategic content, 6-model framework)
       - Design System → data/agent-guides/freya/design-system.md (Phase 5, organic growth, Figma integration)
 
@@ -88,7 +88,11 @@ agent:
 
     - trigger: ux-design
       exec: "{project-root}/{bmad_folder}/wds/workflows/4-ux-design/workflow.md"
-      description: Create interactive prototypes and scenarios (Phase 4)
+      description: Create specifications and scenarios (Phase 4)
+
+    - trigger: agentic-development
+      exec: "{project-root}/{bmad_folder}/wds/workflows/9-agent-dialogs/workflow.md"
+      description: Build features iteratively with agent dialogs (prototypes, implementations, bug fixes)
 
     - trigger: audit-spec
       exec: "{project-root}/{bmad_folder}/wds/workflows/4-ux-design/specification-audit-workflow.md"

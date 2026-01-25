@@ -4,6 +4,18 @@ Choose the template that matches your work type.
 
 ---
 
+## Naming Convention
+
+```
+docs/F-Agent-Dialogs/
+└── {YYYY-MM-DD}-{agent}-{feature-name}/
+    └── {YYYY-MM-DD}-{agent}-{feature-name}-dialog.md
+```
+
+**Example:** `2026-01-23-freya-booking-details-overlay-dialog.md`
+
+---
+
 ## Available Types
 
 | Type | Icon | Template | Use When |
