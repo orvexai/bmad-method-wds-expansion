@@ -29,4 +29,3 @@ path_files: "{project-root}/{bmad_folder}/wds/workflows/paths/"
 
 # Output configuration
 default_output_file: "{output_folder}/wds-workflow-status.yaml"
----

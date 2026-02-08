@@ -1,10 +1,9 @@
 ---
-name: WDS Workflow Status
+name: wds-workflow-status
 description: Check WDS project progress - answers 'what should I do now?' for any agent
 web_bundle: true
----
+
 # WDS Workflow Status - Progress Checker
-name: wds-workflow-status
 author: "Whiteport Design Studio"
 
 # Critical variables from config

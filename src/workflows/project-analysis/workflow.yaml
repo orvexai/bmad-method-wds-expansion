@@ -7,10 +7,10 @@ standalone: true
 primary_agent: "freya-ux"
 
 trigger:
-    on_activation: true
-    keywords: ["analyze", "status", "where are we", "project overview"]
+  on_activation: true
+  keywords: ["analyze", "status", "where are we", "project overview"]
 
-  phases:
+phases:
     - phase: identify
       name: Identify Project Structure
       task: identify-project-structure
@@ -46,7 +46,7 @@ trigger:
       depends_on: analyze
       output: recommendations
 
-  presentation:
+presentation:
     style: branded
     greeting: "🎨 Freya - WDS Designer Agent"
     working: "Analyzing your workspace..."
@@ -57,7 +57,7 @@ trigger:
       suggestion: "💡"
     max_lines: 20
 
-  agent_handoffs:
+agent_handoffs:
     empty_project:
       agent: saga-analyst
       reason: "Saga WDS Analyst Agent - Project needs initial Product Brief"
@@ -79,4 +79,3 @@ trigger:
     phase_6_7_8_development:
       agent: idunn-pm
       reason: "Idunn WDS PM Agent - Handles deliveries, testing, and ongoing development"
----

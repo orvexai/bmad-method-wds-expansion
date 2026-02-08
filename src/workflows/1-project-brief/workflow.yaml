@@ -34,4 +34,3 @@ workflows:
 
 # Output configuration
 output_file: "{output_folder}/A-Product-Brief/project-brief.md"
----
