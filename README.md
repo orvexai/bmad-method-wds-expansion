@@ -150,31 +150,33 @@ Phase 5 (Visual Design)
 
 ## 🚀 Getting Started
 
-### 1. Sideload Agents (Manual Installation)
+### Install via BMAD Method
 
-Since the installer isn't working, manually copy agents:
+WDS is available as a module through the BMAD Method installer:
 
 ```bash
-# Copy agent files to your IDE's agent folder
-cp src/modules/wds/agents/*.yaml <your-ide-agent-folder>/
+npx bmad-method install
 ```
 
-### 2. Activate an Agent
+During installation, select "Whiteport UX Design System" from the module list.
 
-In your IDE, activate one of the WDS agents:
+### Activate an Agent
+
+After installation, activate one of the WDS agents in your IDE:
 - **Saga** - Business & Product Analyst
-- **Idunn** - Product Manager  
+- **Idunn** - Product Manager
 - **Freya** - UX/UI Designer
+- **Mimir** - Learning Orchestrator
 
-### 3. Initialize Workflow
+### Initialize Your First Project
 
 ```
 *workflow-init
 ```
 
-The agent will guide you through project setup and phase selection.
+Mimir will guide you through project setup and workflow selection based on your needs.
 
-📖 **Detailed setup guide:** [docs/how-to/installation/install-bmad.md](../../docs/how-to/installation/install-bmad.md)
+📖 **Full documentation:** [BMAD Method Docs](https://docs.bmad-method.org)
 
 ## 🔗 Integration with BMM
 

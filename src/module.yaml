@@ -2,10 +2,10 @@ code: wds
 name: "WDS: Whiteport Design System (BMad Method Expansion Module)"
 header: "BMad Method Expansion Module: Whiteport Design System"
 subheader: "Configure the settings for the WDS design-first methodology"
-description: ""
+description: "Strategic design methodology for creating products users love with AI-powered UX/UI design agents"
 default_selected: false
-recommendedModules: [bmm]
-requiredModules: [core]
+recommendedModules: []
+requiredModules: [core, bmm]
 
 # Core config values automatically inherited:
 ## user_name

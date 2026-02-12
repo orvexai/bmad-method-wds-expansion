@@ -1,15 +1,20 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "bmad-module-name",
+  "name": "bmad-method-wds-expansion",
   "version": "0.1.0",
-  "description": "A BMad Core expansion module that [does what?]",
+  "description": "Whiteport Design Studio (WDS) - Strategic design methodology for creating products users love with AI-powered UX/UI design agents",
   "keywords": [
     "bmad",
-    "creative"
+    "design",
+    "ux",
+    "ui",
+    "figma",
+    "wds",
+    "whiteport"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https:[github url of project]"
+    "url": "git+https://github.com/bmad-code-org/bmad-method-wds-expansion.git"
   },
   "license": "MIT",
   "author": "Brian (BMad) Madison",
